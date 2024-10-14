@@ -9,7 +9,6 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="579.0" prefWidth="673.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.carla_delafuentebernardino_crudcoches.InicioController">
    <children>
       <Text layoutX="48.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Matrícula:">
@@ -17,9 +16,9 @@
             <Font name="Gill Sans Nova Light" size="20.0" />
          </font>
       </Text>
-      <TextField fx:id="txt_matricula" layoutX="138.0" layoutY="47.0">
+      <TextField fx:id="txt_matricula" editable="false" layoutX="138.0" layoutY="47.0" prefHeight="40.0" prefWidth="204.0">
          <font>
-            <Font name="Gill Sans Nova Light" size="15.0" />
+            <Font name="Gill Sans Nova Light" size="20.0" />
          </font>
       </TextField>
       <Text layoutX="48.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Marca:">
@@ -27,9 +26,9 @@
             <Font name="Gill Sans Nova Light" size="20.0" />
          </font>
       </Text>
-      <TextField fx:id="txt_marca" layoutX="138.0" layoutY="98.0">
+      <TextField fx:id="txt_marca" editable="false" layoutX="138.0" layoutY="98.0" prefHeight="40.0" prefWidth="204.0">
          <font>
-            <Font name="Gill Sans Nova Light" size="15.0" />
+            <Font name="Gill Sans Nova Light" size="20.0" />
          </font>
       </TextField>
       <Text layoutX="48.0" layoutY="170.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Modelo:">
@@ -37,9 +36,9 @@
             <Font name="Gill Sans Nova Light" size="20.0" />
          </font>
       </Text>
-      <TextField fx:id="txt_modelo" layoutX="138.0" layoutY="148.0">
+      <TextField fx:id="txt_modelo" editable="false" layoutX="138.0" layoutY="148.0" prefHeight="40.0" prefWidth="204.0">
          <font>
-            <Font name="Gill Sans Nova Light" size="15.0" />
+            <Font name="Gill Sans Nova Light" size="20.0" />
          </font>
       </TextField>
       <Text layoutX="48.0" layoutY="221.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tipo:">
@@ -48,7 +47,7 @@
          </font>
       </Text>
       <ComboBox fx:id="cb_tipo" layoutX="138.0" layoutY="199.0" prefHeight="31.0" prefWidth="204.0" />
-      <TableView fx:id="tv_coches" layoutX="48.0" layoutY="262.0" prefHeight="297.0" prefWidth="580.0">
+      <TableView fx:id="tv_coches" layoutX="48.0" layoutY="262.0" onMouseClicked="#OnCocheClick" prefHeight="297.0" prefWidth="580.0">
         <columns>
           <TableColumn fx:id="tc_matricula" prefWidth="75.0" text="Matrícula" />
           <TableColumn fx:id="tc_marca" prefWidth="75.0" text="Marca" />

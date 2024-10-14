@@ -7,7 +7,7 @@ public class Conectar {
     public static MongoClient conectar(){
         try{
             final MongoClient conexion = new MongoClient(new MongoClientURI("mongodb://root:1234@localhost:27017/?authSource=admin"));
-            Alerta.mensajeInfo("ÉXITO", "Conexíon a la base de datos realizada correctamente.");
+            //Alerta.mensajeInfo("ÉXITO", "Conexión a la base de datos realizada correctamente.");
             return conexion;
         } catch (Exception e) {
             Alerta.mensajeError("Conexión Fallida\n" + e.getMessage());
