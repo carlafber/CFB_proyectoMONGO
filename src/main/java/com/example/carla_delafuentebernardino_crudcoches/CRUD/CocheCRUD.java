@@ -1,4 +1,4 @@
-package com.example.carla_delafuentebernardino_crudcoches.DAO;
+package com.example.carla_delafuentebernardino_crudcoches.CRUD;
 
 import com.example.carla_delafuentebernardino_crudcoches.classes.Coche;
 import com.example.carla_delafuentebernardino_crudcoches.util.Alerta;
@@ -13,7 +13,7 @@ import org.bson.Document;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CocheDAO {
+public class CocheCRUD {
     MongoClient con;
     MongoCollection<Document> collection = null;
     String json;

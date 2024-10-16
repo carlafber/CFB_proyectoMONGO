@@ -1,6 +1,6 @@
 package com.example.carla_delafuentebernardino_crudcoches.controllers;
 
-import com.example.carla_delafuentebernardino_crudcoches.DAO.CocheDAO;
+import com.example.carla_delafuentebernardino_crudcoches.CRUD.CocheCRUD;
 import com.example.carla_delafuentebernardino_crudcoches.classes.Coche;
 import com.example.carla_delafuentebernardino_crudcoches.util.Alerta;
 import javafx.collections.FXCollections;
@@ -28,13 +28,10 @@ public class InicioController implements Initializable {
     private Button bt_eliminar;
 
     @FXML
-    private Button bt_guardar;
+    private Button bt_insertar;
 
     @FXML
     private Button bt_modificar;
-
-    @FXML
-    private Button bt_nuevo;
 
     @FXML
     private ComboBox<String> cb_tipo;
@@ -65,9 +62,7 @@ public class InicioController implements Initializable {
 
     List<Coche> coches;
 
-    private CocheDAO cocheDAO;
-
-    private Coche coche;
+    private CocheCRUD cocheCRUD;
 
     private Coche coche_seleccionado;
 
@@ -76,7 +71,6 @@ public class InicioController implements Initializable {
     @FXML
     void OnCancelarClick(ActionEvent event) {
         limpiarCampos();
-        desactivarCampos();
     }
 
     @FXML
@@ -84,23 +78,21 @@ public class InicioController implements Initializable {
         if (coche_seleccionado == null) {
             Alerta.mensajeError("Seleccione un coche de la tabla para poder eliminarlo.");
         } else {
-            cocheDAO.eliminarCoche(coche_seleccionado.getMatricula());
+            cocheCRUD.eliminarCoche(coche_seleccionado.getMatricula());
             cargarCoches();
-            desactivarCampos();
         }
 
     }
 
     @FXML
-    void OnGuardarClick(ActionEvent event) {
+    void OnInsertarClick(ActionEvent event) {
         if(txt_matricula.getText().isEmpty() || txt_marca.getText().isEmpty() || txt_modelo.getText().isEmpty() || cb_tipo.getValue() == null){
             Alerta.mensajeError("Complete todos los campos, por favor.");
         } else {
             Coche cocheNuevo = new Coche(txt_matricula.getText(), txt_marca.getText(), txt_modelo.getText(), cb_tipo.getValue());
-            cocheDAO.insertarCoche(cocheNuevo);
+            cocheCRUD.insertarCoche(cocheNuevo);
 
             cargarCoches();
-            desactivarCampos();
             limpiarCampos();
         }
     }
@@ -114,17 +106,10 @@ public class InicioController implements Initializable {
             coche_seleccionado.setModelo(txt_modelo.getText());
             coche_seleccionado.setTipo(cb_tipo.getValue());
 
-            cocheDAO.modificarCoche(coche_seleccionado);
+            cocheCRUD.modificarCoche(coche_seleccionado);
 
             cargarCoches();
-            activarCampos();
         }
-    }
-
-    @FXML
-    void OnNuevoClick(ActionEvent event) {
-        Alerta.mensajeInfo("INFO", "Complete los campos para crear un nuevo coche.");
-        activarCampos();
     }
 
     @FXML
@@ -136,15 +121,13 @@ public class InicioController implements Initializable {
             txt_marca.setText(coche_seleccionado.getMarca());
             txt_modelo.setText(coche_seleccionado.getModelo());
             cb_tipo.setValue(coche_seleccionado.getTipo());
-
-            activarCampos(); // Si deseas que los campos sean editables
         }
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        cocheDAO = new CocheDAO();
-        cocheDAO.crearBD();
+        cocheCRUD = new CocheCRUD();
+        cocheCRUD.crearBD();
 
         String[] tipos = new String[]{"Familiar", "Monovolumen", "Deportivo", "SUV"};
         cb_tipo.setItems(FXCollections.observableArrayList(tipos));
@@ -154,15 +137,13 @@ public class InicioController implements Initializable {
         tc_modelo.setCellValueFactory(new PropertyValueFactory<>("modelo"));
         tc_tipo.setCellValueFactory(new PropertyValueFactory<>("tipo"));
 
-        desactivarCampos();
         cargarCoches();
 
         tv_coches.setOnMouseClicked(this::OnCocheClick);
-
     }
 
     public void cargarCoches(){
-        coches = cocheDAO.obtenerCoches();
+        coches = cocheCRUD.obtenerCoches();
         tv_coches.getItems().setAll(coches);
     }
 
@@ -174,17 +155,4 @@ public class InicioController implements Initializable {
         cb_tipo.setValue(null);
     }
 
-    public void activarCampos(){
-        txt_matricula.setEditable(true);
-        txt_marca.setEditable(true);
-        txt_modelo.setEditable(true);
-        cb_tipo.setDisable(false);
-    }
-
-    public void desactivarCampos(){
-        txt_matricula.setEditable(false);
-        txt_marca.setEditable(false);
-        txt_modelo.setEditable(false);
-        cb_tipo.setDisable(true);
-    }
 }
