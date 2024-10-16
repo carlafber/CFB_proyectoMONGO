@@ -13,11 +13,11 @@ public class Conectar {
             Properties configuration = new Properties();
             configuration.load(new FileInputStream(new File("src/main/resources/configuration/database.properties")));
 
+            String username = configuration.getProperty("username");
+            String password = configuration.getProperty("password");
             String host = configuration.getProperty("host");
             String port = configuration.getProperty("port");
             String author = configuration.getProperty("author");
-            String username = configuration.getProperty("username");
-            String password = configuration.getProperty("password");
 
             final MongoClient conexion = new MongoClient(new MongoClientURI("mongodb://" + username + ":" + password + "@" + host + ":" + port + "/?authSource=" + author));
             System.out.println("Conexión a la base de datos realizada correctamente.");
