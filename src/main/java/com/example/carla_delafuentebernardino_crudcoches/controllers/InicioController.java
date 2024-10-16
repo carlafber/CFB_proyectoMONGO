@@ -92,6 +92,8 @@ public class InicioController implements Initializable {
             Coche cocheNuevo = new Coche(txt_matricula.getText(), txt_marca.getText(), txt_modelo.getText(), cb_tipo.getValue());
             cocheCRUD.insertarCoche(cocheNuevo);
 
+            Alerta.mensajeInfo("ÉXITO", "Coche insertado correctamente.");
+
             cargarCoches();
             limpiarCampos();
         }
@@ -109,6 +111,7 @@ public class InicioController implements Initializable {
             cocheCRUD.modificarCoche(coche_seleccionado);
 
             cargarCoches();
+            Alerta.mensajeInfo("ÉXITO", "Coche modificado correctamente.");
         }
     }
 
