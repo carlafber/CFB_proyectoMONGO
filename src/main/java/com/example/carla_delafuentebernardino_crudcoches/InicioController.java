@@ -151,6 +151,7 @@ public class InicioController implements Initializable {
         tc_modelo.setCellValueFactory(new PropertyValueFactory<>("modelo"));
         tc_tipo.setCellValueFactory(new PropertyValueFactory<>("tipo"));
 
+        desactivarCampos();
         cargarCoches();
 
         tv_coches.setOnMouseClicked(this::OnCocheClick);
@@ -174,11 +175,13 @@ public class InicioController implements Initializable {
         txt_matricula.setEditable(true);
         txt_marca.setEditable(true);
         txt_modelo.setEditable(true);
+        cb_tipo.setDisable(false);
     }
 
     public void desactivarCampos(){
         txt_matricula.setEditable(false);
         txt_marca.setEditable(false);
         txt_modelo.setEditable(false);
+        cb_tipo.setDisable(true);
     }
 }
