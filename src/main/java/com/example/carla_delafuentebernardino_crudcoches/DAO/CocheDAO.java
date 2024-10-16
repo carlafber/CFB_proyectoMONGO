@@ -1,5 +1,8 @@
-package com.example.carla_delafuentebernardino_crudcoches;
+package com.example.carla_delafuentebernardino_crudcoches.DAO;
 
+import com.example.carla_delafuentebernardino_crudcoches.classes.Coche;
+import com.example.carla_delafuentebernardino_crudcoches.util.Alerta;
+import com.example.carla_delafuentebernardino_crudcoches.util.Conectar;
 import com.google.gson.Gson;
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;

@@ -1,4 +1,4 @@
-package com.example.carla_delafuentebernardino_crudcoches;
+package com.example.carla_delafuentebernardino_crudcoches.util;
 
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
