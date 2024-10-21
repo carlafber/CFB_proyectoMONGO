@@ -80,6 +80,7 @@ public class InicioController implements Initializable {
         } else {
             cocheCRUD.eliminarCoche(coche_seleccionado.getMatricula());
             cargarCoches();
+            Alerta.mensajeInfo("ÉXITO", "Coche eliminado correctamente.");
             limpiarCampos();
         }
 
@@ -93,9 +94,8 @@ public class InicioController implements Initializable {
             Coche cocheNuevo = new Coche(txt_matricula.getText(), txt_marca.getText(), txt_modelo.getText(), cb_tipo.getValue());
             cocheCRUD.insertarCoche(cocheNuevo);
 
-            Alerta.mensajeInfo("ÉXITO", "Coche insertado correctamente.");
-
             cargarCoches();
+            Alerta.mensajeInfo("ÉXITO", "Coche insertado correctamente.");
             limpiarCampos();
         }
     }
@@ -113,7 +113,6 @@ public class InicioController implements Initializable {
 
             cargarCoches();
             Alerta.mensajeInfo("ÉXITO", "Coche modificado correctamente.");
-            limpiarCampos();
         }
     }
 
