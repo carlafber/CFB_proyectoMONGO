@@ -151,7 +151,6 @@ public class InicioController implements Initializable {
         tv_coches.getItems().setAll(coches);
     }
 
-
     public void limpiarCampos() {
         txt_matricula.clear();
         txt_marca.clear();
