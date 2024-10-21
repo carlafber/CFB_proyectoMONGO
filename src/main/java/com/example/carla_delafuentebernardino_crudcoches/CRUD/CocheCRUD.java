@@ -43,7 +43,11 @@ public class CocheCRUD {
 
     public boolean existeCoche(String matricula) {
         // Verifica si existe un coche con la matrícula proporcionada
-        return collection.countDocuments(Filters.eq("matricula", matricula)) > 0;
+        long cont_coches = collection.countDocuments(Filters.eq("matricula", matricula));
+        if(cont_coches > 0){
+            return true;
+        }
+        return false;
     }
 
     public void insertarCochesDePrueba() {
