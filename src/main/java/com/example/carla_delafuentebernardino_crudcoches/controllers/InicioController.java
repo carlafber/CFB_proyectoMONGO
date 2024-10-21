@@ -157,5 +157,4 @@ public class InicioController implements Initializable {
         txt_modelo.clear();
         cb_tipo.setValue(null);
     }
-
 }
