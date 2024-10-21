@@ -92,11 +92,12 @@ public class InicioController implements Initializable {
             Alerta.mensajeError("Complete todos los campos, por favor.");
         } else {
             Coche cocheNuevo = new Coche(txt_matricula.getText(), txt_marca.getText(), txt_modelo.getText(), cb_tipo.getValue());
-            cocheCRUD.insertarCoche(cocheNuevo);
-
-            cargarCoches();
-            Alerta.mensajeInfo("ÉXITO", "Coche insertado correctamente.");
-            limpiarCampos();
+            if(cocheCRUD.insertarCoche(cocheNuevo)){
+                cargarCoches();
+                Alerta.mensajeInfo("ÉXITO", "Coche insertado correctamente.");
+                limpiarCampos();
+            }
+            txt_matricula.clear();
         }
     }
 

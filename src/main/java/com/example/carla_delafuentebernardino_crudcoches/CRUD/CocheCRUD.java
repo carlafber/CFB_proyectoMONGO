@@ -54,14 +54,22 @@ public class CocheCRUD {
         insertarCoche(coche2);
     }
 
-    public void insertarCoche(Coche coche) {
+    public boolean insertarCoche(Coche coche) {
         if (existeCoche(coche.getMatricula())) {
             Alerta.mensajeError("Ya existe un coche con la matrícula: " + coche.getMatricula());
+            return false;
         } else {
             Gson gson = new Gson();
             json = gson.toJson(coche);
             doc = Document.parse(json);
             collection.insertOne(doc);
+
+            // Verificar si el coche fue insertado correctamente
+            if (existeCoche(coche.getMatricula())) {
+                return true;
+            } else {
+                return false;
+            }
         }
     }
 
