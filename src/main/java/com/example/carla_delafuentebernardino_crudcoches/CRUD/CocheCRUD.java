@@ -88,6 +88,5 @@ public class CocheCRUD {
 
         //Actualiza el documento en la colección utilizando la matrícula como filtro
         collection.updateOne(Filters.eq("matricula", coche.getMatricula()), new Document("$set", doc));
-
     }
 }
