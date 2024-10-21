@@ -35,7 +35,6 @@ public class CocheCRUD {
                 insertarCochesDePrueba();
             }
 
-            //Alerta.mensajeInfo("ÉXITO", "Colección creada correctamente.");
         } catch (Exception exception) {
             Alerta.mensajeError(exception.getClass().getName() + ": " + exception.getMessage());
         }
