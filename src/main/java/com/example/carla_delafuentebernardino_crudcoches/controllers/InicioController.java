@@ -80,6 +80,7 @@ public class InicioController implements Initializable {
         } else {
             cocheCRUD.eliminarCoche(coche_seleccionado.getMatricula());
             cargarCoches();
+            limpiarCampos();
         }
 
     }
@@ -112,6 +113,7 @@ public class InicioController implements Initializable {
 
             cargarCoches();
             Alerta.mensajeInfo("ÉXITO", "Coche modificado correctamente.");
+            limpiarCampos();
         }
     }
 
