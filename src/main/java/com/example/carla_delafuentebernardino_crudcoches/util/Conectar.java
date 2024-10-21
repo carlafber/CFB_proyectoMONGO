@@ -27,8 +27,4 @@ public class Conectar {
             return null;
         }
     }
-
-    public static void desconectar(MongoClient con) {
-        con.close();
-    }
 }
