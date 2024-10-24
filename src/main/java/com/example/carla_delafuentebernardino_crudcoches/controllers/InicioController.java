@@ -83,7 +83,6 @@ public class InicioController implements Initializable {
             Alerta.mensajeInfo("ÉXITO", "Coche eliminado correctamente.");
             limpiarCampos();
         }
-
     }
 
     @FXML
